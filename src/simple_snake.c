@@ -2,61 +2,47 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL2_gfxPrimitives.h>
+#include <SDL.h>
+#include <SDL2_gfxPrimitives.h>
+#include "view.h"
+#include "structha.h"
+#include "naghsheha.h"
+#include "harekat.h"
 
 const int step = 5;
-void moveCircle(SDL_Keycode key, double* snake_x, double* snake_y) {
-	switch (key) {
-		case SDLK_UP:
-			*snake_y -= step;
-			break;
-		case SDLK_DOWN:
-			*snake_y += step;
-			break;
-		case SDLK_RIGHT:
-			*snake_x += step;
-			break;
-		case SDLK_LEFT:
-			*snake_x -= step;
-			break;
-	}
-}
+const double megh=2*3.14/90;
 
-bool hasEatenFood(double snake_x, double snake_y, double food_x, double food_y, double radius, double rx, double ry) {
-	double distance = sqrt(pow(snake_x - food_x, 2) + pow(snake_y - food_y, 2));
-	return distance < radius + (rx + ry) / 2;
-}
-
-void changeFoodLocation(double * food_x, double * food_y) {
-	*food_x = rand() % 600 + 100;
-	*food_y = rand() % 400 + 100;
-}
-
-const int EXIT = 12345;
-int handleEvents(double* snake_x, double* snake_y) {
+int handleEvents() {
     SDL_Event event;
     while (SDL_PollEvent(&event)) {
-    	if (event.type == SDL_QUIT)
-    	    return EXIT;
-    	if (event.type == SDL_KEYDOWN)
-    		moveCircle(event.key.keysym.sym , snake_x, snake_y);
+        if (event.type == SDL_QUIT)
+            return 1;
     }
 }
 
-int main() {
-	double snake_x = 100;
-	double snake_y = 100;
-	double snake_radius = 20;
+
+
+#ifdef main
+#undef main
+#endif
+
+int main(int argc, char* argv[]) {
+    Map map;
+    tirs tir[5];
+    tanks tank;
+    int flagtir=0;
+    tank.x = 50;
+    tank.y = 50;
+    tank.zav=0;
+    double snake_radius = 20;
+    for(int i=0;i<5;i++){
+        tir[i].por=false;
+        tir[i].zaman=0;
+    }
+
     int snake_score = 0;
-
-	double food_x = 300;
-	double food_y = 300;
-	double food_rx = 15;
-	double food_ry = 10;
-
-	SDL_Init(SDL_INIT_VIDEO);
-	SDL_Window* window = SDL_CreateWindow("workshop", 20, 20, 800, 600, SDL_WINDOW_OPENGL);
+    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Window* window = SDL_CreateWindow("workshop", 20, 20, 600, 600, SDL_WINDOW_OPENGL);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     int begining_of_time = SDL_GetTicks();
@@ -64,24 +50,47 @@ int main() {
     while (1) {
         int start_ticks = SDL_GetTicks();
 
-        if (handleEvents(&snake_x, &snake_y) == EXIT) break;
+        if (handleEvents() ) break;
+        SDL_Event event;
 
-    	SDL_SetRenderDrawColor(renderer, 120, 60, 80, 255);
-    	SDL_RenderClear(renderer);
+        SDL_SetRenderDrawColor(renderer, 255,255, 255, 255);
+        SDL_RenderClear(renderer);
+        khoondan(&map,"C:\\Users\\majid\\Desktop\\majijjjj.txt");
+        rasm(&map,renderer);
 
-    	if (hasEatenFood(snake_x, snake_y, food_x, food_y, snake_radius, food_rx, food_ry)) {
-    	   	snake_radius *= 1.2;
-            snake_score++;
-    	   	changeFoodLocation(&food_x, &food_y);
-    	}
+        klid(snake_radius,tir,&tank,&flagtir,step,map);
 
-    	filledCircleRGBA(renderer, snake_x, snake_y, snake_radius, 0, 100, 100, 255);
-    	filledEllipseRGBA(renderer, food_x, food_y, food_rx, food_ry, rand() % 255, rand() % 255, rand() % 255, 255);
+        int rt= snake_radius / 4;
+        for(int i=0;i<5;i++){
+            if(tir[i].por==true){
+                if((tir[i].y-step*sin(tir[i].zavtir)<rt||tir[i].y-step*sin(tir[i].zavtir)>600-rt)||divarkhor(map, tir[i].x + step * cos(tir[i].zavtir), tir[i].y - step * sin(tir[i].zavtir),snake_radius / 4)==2){
+                    tir[i].zavtir=-tir[i].zavtir;
+                }
+                else if(tir[i].x+step*cos(tir[i].zavtir)<rt|| tir[i].x+step*cos(tir[i].zavtir)>600+rt||divarkhor(map, tir[i].x + step * cos(tir[i].zavtir), tir[i].y - step * sin(tir[i].zavtir),snake_radius / 4)==1){
+                    tir[i].zavtir=-tir[i].zavtir-3.14;
+                }
+                tir[i].y -= step * sin(tir[i].zavtir);
+                tir[i].x += step * cos(tir[i].zavtir);
+                filledCircleRGBA(renderer, tir[i].x, tir[i].y, snake_radius / 4, 0, 100, 100, 255);
+                tir[i].zaman++;
+            }
+        }
+        for(int i=0;i<5;i++){
+            if(tir[i].zaman==200){
+                tir[i].por=false;
+                tir[i].zaman=0;
+            }
+
+        }
+
+
+        filledCircleRGBA(renderer, tank.x, tank.y, snake_radius, 0, 100, 100, 255);
+        thickLineRGBA(renderer,tank.x,tank.y,2*snake_radius*cos(tank.zav)+tank.x,tank.y-2*snake_radius*sin(tank.zav),5, 0, 100, 100, 255);
         char* buffer = malloc(sizeof(char) * 50);
-        sprintf(buffer, "score: %d   elapsed time: %dms", snake_score, start_ticks - begining_of_time);
+        sprintf(buffer, "score: %d   elapsed time: %dms", snake_score,  start_ticks -begining_of_time);
         printf("%s", buffer);
         stringRGBA(renderer, 5, 5, buffer, 0, 0, 0, 255);
-    	SDL_RenderPresent(renderer);
+        SDL_RenderPresent(renderer);
 
         while (SDL_GetTicks() - start_ticks < 1000 / FPS);
     }
