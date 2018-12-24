@@ -8,36 +8,30 @@
 #include "structha.h"
 #include "naghsheha.h"
 #include "harekat.h"
+#include "rasma.h"
 
 const int step = 5;
 const double megh=2*3.14/90;
-
-int handleEvents() {
-    SDL_Event event;
-    while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT)
-            return 1;
-    }
-}
-
-
-
 #ifdef main
 #undef main
 #endif
 
 int main(int argc, char* argv[]) {
     Map map;
-    tirs tir[5];
-    tanks tank;
+    tanks tank[3];
     int flagtir=0;
-    tank.x = 50;
-    tank.y = 50;
-    tank.zav=0;
-    double snake_radius = 20;
-    for(int i=0;i<5;i++){
-        tir[i].por=false;
-        tir[i].zaman=0;
+    int flagtir2=0;
+    tank[1].x = 50;tank[2].x=550;
+    tank[1].y = 50;tank[2].y=500;
+    tank[1].zav=0;tank[2].zav=0;
+    tank[1].has=true;
+    tank[2].has=true;
+    double snake_radius = 15;
+    for(int j=0;j<5;j++) {
+        for (int i = 0; i < 5; i++) {
+            tank[j].tir[i].por = false;
+            tank[j].tir[i].zaman = 0;
+        }
     }
 
     int snake_score = 0;
@@ -55,41 +49,45 @@ int main(int argc, char* argv[]) {
 
         SDL_SetRenderDrawColor(renderer, 255,255, 255, 255);
         SDL_RenderClear(renderer);
-        khoondan(&map,"C:\\Users\\majid\\Desktop\\majijjjj.txt");
+
+        for(int j=1;j<3;j++) {
+            for (int i = 0; i < 5; i++) {
+                if (tank[j].tir[i].zaman == 200) {
+                    tank[j].tir[i].por = false;
+                    tank[j].tir[i].zaman = 0;
+                }
+            }
+        }
+        for(int i=1;i<3;i++){
+            for(int j=0;j<5;j++){
+                if(tank[1].has==true&&tank[i].tir[j].por==true&&(tank[i].tir[j].x-tank[1].x)*(tank[i].tir[j].x-tank[1].x)+(tank[i].tir[j].y-tank[1].y)*(tank[i].tir[j].y-tank[1].y)<=25/16*snake_radius*snake_radius){
+                    tank[1].has=false;
+                    tank[1].tir[j].por=false;
+                }
+                if(tank[2].has==true&&tank[i].tir[j].por==true&&(tank[i].tir[j].x-tank[2].x)*(tank[i].tir[j].x-tank[2].x)+(tank[i].tir[j].y-tank[2].y)*(tank[i].tir[j].y-tank[2].y)<=25/16*snake_radius*snake_radius){
+                    tank[2].has=false;
+                    tank[2].tir[j].por=false;
+                }
+            }
+        }
+        khoondan(&map);
         rasm(&map,renderer);
 
-        klid(snake_radius,tir,&tank,&flagtir,step,map);
+        klid(snake_radius,tank,&flagtir,step,map,&flagtir2);
 
-        int rt= snake_radius / 4;
-        for(int i=0;i<5;i++){
-            if(tir[i].por==true){
-                if((tir[i].y-step*sin(tir[i].zavtir)<rt||tir[i].y-step*sin(tir[i].zavtir)>600-rt)||divarkhor(map, tir[i].x + step * cos(tir[i].zavtir), tir[i].y - step * sin(tir[i].zavtir),snake_radius / 4)==2){
-                    tir[i].zavtir=-tir[i].zavtir;
-                }
-                else if(tir[i].x+step*cos(tir[i].zavtir)<rt|| tir[i].x+step*cos(tir[i].zavtir)>600+rt||divarkhor(map, tir[i].x + step * cos(tir[i].zavtir), tir[i].y - step * sin(tir[i].zavtir),snake_radius / 4)==1){
-                    tir[i].zavtir=-tir[i].zavtir-3.14;
-                }
-                tir[i].y -= step * sin(tir[i].zavtir);
-                tir[i].x += step * cos(tir[i].zavtir);
-                filledCircleRGBA(renderer, tir[i].x, tir[i].y, snake_radius / 4, 0, 100, 100, 255);
-                tir[i].zaman++;
-            }
+        rasmtir(snake_radius,tank,renderer,step,map);
+        if(tank[1].has==true) {
+            filledCircleRGBA(renderer, tank[1].x, tank[1].y, snake_radius, 0, 100, 100, 255);
+            thickLineRGBA(renderer, tank[1].x, tank[1].y, 2 * snake_radius * cos(tank[1].zav) + tank[1].x,tank[1].y - 2 * snake_radius * sin(tank[1].zav), 5, 0, 100, 100, 255);
         }
-        for(int i=0;i<5;i++){
-            if(tir[i].zaman==200){
-                tir[i].por=false;
-                tir[i].zaman=0;
-            }
-
+        if(tank[2].has==true) {
+            filledCircleRGBA(renderer, tank[2].x, tank[2].y, snake_radius, 100, 0, 100, 255);
+            thickLineRGBA(renderer, tank[2].x, tank[2].y, 2 * snake_radius * cos(tank[2].zav) + tank[2].x,tank[2].y - 2 * snake_radius * sin(tank[2].zav), 5, 100, 0, 100, 255);
         }
-
-
-        filledCircleRGBA(renderer, tank.x, tank.y, snake_radius, 0, 100, 100, 255);
-        thickLineRGBA(renderer,tank.x,tank.y,2*snake_radius*cos(tank.zav)+tank.x,tank.y-2*snake_radius*sin(tank.zav),5, 0, 100, 100, 255);
-        char* buffer = malloc(sizeof(char) * 50);
-        sprintf(buffer, "score: %d   elapsed time: %dms", snake_score,  start_ticks -begining_of_time);
-        printf("%s", buffer);
-        stringRGBA(renderer, 5, 5, buffer, 0, 0, 0, 255);
+        //char* buffer = malloc(sizeof(char) * 50);
+        //sprintf(buffer, "score: %d   elapsed time: %dms", snake_score,  start_ticks -begining_of_time);
+        //printf("%s", buffer);
+        //stringRGBA(renderer, 5, 5, buffer, 0, 0, 0, 255);
         SDL_RenderPresent(renderer);
 
         while (SDL_GetTicks() - start_ticks < 1000 / FPS);

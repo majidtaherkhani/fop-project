@@ -11,13 +11,13 @@
 #include "structha.h"
 
 
-void khoondan(Map *map,char *ss){
+void khoondan(Map *map){
     FILE *file;
-    file=fopen(ss,"r");
+    file=fopen("C:\\Users\\majid\\Desktop\\majijjjj.txt","r");
     char khataval[20];
     fgets(khataval,20,file);
     map->tedad=(khataval[0]-'0')*10+khataval[1]-'0';
-    for(int i=0;i<map->tedad;i++){
+    for(int i=0; i< map->tedad ;i++){
         char khat[20];
         fgets(khat,20,file);
         map->divar[i].x1=(khat[0]-'0')*100;
@@ -55,6 +55,51 @@ int divarkhor(Map map,int x,int y,int r){
             else{
                 if(map.divar[i].x1<x+r&&abs(y-map.divar[i].y1)<r){
                     return 2;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+int saresh(int x,int y,int x2,int y2,Map map){
+    bool amood;
+    double mlool;
+    if(x2!=x) {
+        amood=true;
+        mlool = (y2 - y) / (x2 - x);
+    }
+    else{
+        amood=false;
+    }
+    for(int i=0;i<map.tedad;i++){
+        if(map.divar[i].x1==map.divar[i].x2){
+            if(amood==true&&x==map.divar[i].x2){
+                if((map.divar[i].y1<y&&y<map.divar[i].y2)||(map.divar[i].y1<y2&&y2<map.divar[i].y2)){
+                    return 1;
+                }
+            }
+            if(amood==false&&map.divar[i].y1<(mlool*(map.divar[i].x1-x)+y)&&(mlool*(map.divar[i].x1-x)+y)<map.divar[i].y2){
+                return 1;
+            }
+
+        }
+        if(map.divar[i].y1==map.divar[i].y2){
+            if(amood==false&&mlool==0){
+                if(y==map.divar[i].y1){
+                    if((map.divar[i].x1<x&&x<map.divar[i].x2)||(map.divar[i].x1<x2&&x2<map.divar[i].x2)){
+                        return 1;
+                    }
+                }
+            }
+            if(amood==true){
+                if(map.divar[i].x1<x&&map.divar[i].x2>x){
+                    return 1;
+                }
+            }
+            if(amood==false&&mlool!=0){
+                if(map.divar[i].x1<(map.divar[i].y1-y)/mlool+x&&map.divar[i].x2>(map.divar[i].y1-y)/mlool+x){
+                    return 1;
                 }
             }
         }

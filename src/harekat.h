@@ -6,5 +6,5 @@
 #define PROJECT_HAREKAT_H
 
 #include "structha.h"
-void klid(int snake_radius,tirs tir[],tanks *tank,int *flagtir,int step,Map map);
+void klid(int snake_radius,tanks tank[],int *flagtir,int step,Map map,int *flagtir2);
 #endif //PROJECT_HAREKAT_H

@@ -7,7 +7,8 @@
 
 #include "structha.h"
 
-void khoondan(Map *map, char *ss);
+void khoondan(Map *map);
 void rasm(Map *map,SDL_Renderer *renderer);
 int divarkhor(Map map,int x,int y,int r);
+int saresh(int x,int y,int x2,int y2,Map map);
 #endif //PROJECT_NAGHSHEHA_H

@@ -15,9 +15,11 @@ typedef struct{
     int zaman;
 } tirs;
 typedef struct{
-    int x;
-    int y;
+    double x;
+    double y;
     double zav;
+    tirs tir[5];
+    bool has;
 }tanks;
 typedef struct {
     int x1;
