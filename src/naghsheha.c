@@ -9,7 +9,7 @@
 #include <SDL2_gfxPrimitives.h>
 #include "naghsheha.h"
 #include "structha.h"
-
+#include<time.h>
 
 void khoondan(Map *map){
     FILE *file;
@@ -105,4 +105,318 @@ int saresh(int x,int y,int x2,int y2,Map map){
         }
     }
     return 0;
+}
+
+void maprand(int shomare,box khoone[][5][5]){
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++) {
+            khoone[i][j][shomare].divup = true;
+            khoone[i][j][shomare].divdon = true;
+            khoone[i][j][shomare].divleft = true;
+            khoone[i][j][shomare].divright = true;
+        }
+    }
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++){
+            if(i==0){
+                khoone[i][j][shomare].divup=false;
+            }
+            if(i==4){
+                khoone[i][j][shomare].divdon=false;
+            }
+            if(j==0){
+                khoone[i][j][shomare].divleft=false;
+            }
+            if(j==4){
+                khoone[i][j][shomare].divright=false;
+            }
+        }
+    }
+    int mark[5][5];
+    for(int i=0;i<5;i++){
+        for(int j=0;j<5;j++){
+            mark[i][j]=0;
+        }
+    }
+
+    int random,randoma;
+    random=rand()%5;
+    randoma=rand()%5;
+    dfs(rand()%5,rand()%5,khoone,mark,shomare);
+}
+void rasja(box khoone[][5][5],SDL_Renderer *renderer,Map *map) {
+    int te=0;
+    for(int k=1;k<=4;k++){
+        if(k==1){
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                int xx = j;
+                int yy = i;
+                if (khoone[i][j][k].divup == true) {
+                    lineRGBA(renderer, xx * 60, yy * 60, xx * 60 + 60, yy * 60, 0, 0, 0, 255);
+//
+                }
+                if (khoone[i][j][k].divdon == true) {
+                    lineRGBA(renderer, xx * 60, yy * 60 + 60, xx * 60 + 60, yy * 60 + 60, 0, 0, 0, 255);
+//
+                }
+                if (khoone[i][j][k].divright == true) {
+                    lineRGBA(renderer, xx * 60 + 60, yy * 60, xx * 60 + 60, yy * 60 + 60, 0, 0, 0, 255);
+//
+                }
+                if (khoone[i][j][k].divleft == true) {
+                    lineRGBA(renderer, xx * 60, yy * 60, xx * 60, yy * 60 + 60, 0, 0, 0, 255);
+//
+                }
+            }
+        }
+    }
+    if(k==2) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                int xx = j;
+                int yy = i;
+                if (khoone[i][j][k].divup == true) {
+                    lineRGBA(renderer, 300 + xx * 60, yy * 60, 300 + xx * 60 + 60, yy * 60, 0, 0, 0, 255);
+//
+                }
+                if (khoone[i][j][k].divdon == true) {
+                    lineRGBA(renderer, 300 + xx * 60, yy * 60 + 60, 300 + xx * 60 + 60, yy * 60 + 60, 0, 0, 0, 255);
+//
+                }
+                if (khoone[i][j][k].divright == true) {
+                    lineRGBA(renderer, 300 + xx * 60 + 60, yy * 60, 300 + xx * 60 + 60, yy * 60 + 60, 0, 0, 0, 255);
+//
+                }
+                if (khoone[i][j][k].divleft == true) {
+                    lineRGBA(renderer, 300 + xx * 60, yy * 60, 300 + xx * 60, yy * 60 + 60, 0, 0, 0, 255);
+//
+                }
+            }
+        }
+    }
+    if(k==3){
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            int xx = j;
+            int yy = i;
+            if (khoone[i][j][k].divup == true) {
+                lineRGBA(renderer, xx * 60, 300 + yy * 60, xx * 60 + 60, 300 + yy * 60, 0, 0, 0, 255);
+//
+            }
+            if (khoone[i][j][k].divdon == true) {
+                lineRGBA(renderer, xx * 60, 300 + yy * 60 + 60, xx * 60 + 60, 300 + yy * 60 + 60, 0, 0, 0, 255);
+//
+            }
+            if (khoone[i][j][k].divright == true) {
+                lineRGBA(renderer, xx * 60 + 60, 300 + yy * 60, xx * 60 + 60, 300 + yy * 60 + 60, 0, 0, 0, 255);
+//
+            }
+            if (khoone[i][j][k].divleft == true) {
+                lineRGBA(renderer, xx * 60, 300 + yy * 60, xx * 60, 300 + yy * 60 + 60, 0, 0, 0, 255);
+//
+            }
+        }
+    }
+        }
+    if(k==4) {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                int xx = j;
+                int yy = i;
+                if (khoone[i][j][k].divup == true) {
+                    lineRGBA(renderer, 300 + xx * 60, 300 + yy * 60, 300 + xx * 60 + 60, 300 + yy * 60, 0, 0, 0, 255);
+//
+                }
+                if (khoone[i][j][k].divdon == true) {
+                    lineRGBA(renderer, 300 + xx * 60, 300 + yy * 60 + 60, 300 + xx * 60 + 60, 300 + yy * 60 + 60, 0, 0,0,255);
+//
+                }
+                if (khoone[i][j][k].divright == true) {
+                    lineRGBA(renderer, 300 + xx * 60 + 60, 300 + yy * 60, 300 + xx * 60 + 60, 300 + yy * 60 + 60, 0, 0,0,255);
+//
+                }
+                if (khoone[i][j][k].divleft == true) {
+                    lineRGBA(renderer, 300 + xx * 60, 300 + yy * 60, 300 + xx * 60, 300 + yy * 60 + 60, 0, 0, 0, 255);
+                }
+            }
+        }
+    }
+    }
+}
+int aval(box khoone[][5][5],Map *map) {
+    int te=0;
+    for(int k=1;k<=4;k++){
+        if(k==1){
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    int xx = j;
+                    int yy = i;
+                    if (khoone[i][j][k].divup == true) {
+                    (*map).divar[te].x1 = xx * 60;
+                    (*map).divar[te].y1 = yy * 60;
+                    (*map).divar[te].x2 = xx * 60 + 60;
+                    (*map).divar[te].y2 = yy * 60;
+                        te++;
+                    }
+                    if (khoone[i][j][k].divdon == true) {
+                    (*map).divar[te].x1 = xx * 60;
+                    (*map).divar[te].y1 = yy * 60 + 60;
+                    (*map).divar[te].x2 = xx * 60 + 60;
+                    (*map).divar[te].y2 = yy * 60 + 60;
+                        te++;
+                    }
+                    if (khoone[i][j][k].divright == true) {
+                    (*map).divar[te].x1 = xx * 60 + 60;
+                    (*map).divar[te].y1 = yy * 60;
+                    (*map).divar[te].x2 = xx * 60 + 60;
+                    (*map).divar[te].y2 = yy * 60 + 60;
+                        te++;
+                    }
+                    if (khoone[i][j][k].divleft == true) {
+                    (*map).divar[te].x1 = xx * 60;
+                    (*map).divar[te].y1 = yy * 60;
+                    (*map).divar[te].x2 = xx * 60;
+                    (*map).divar[te].y2 = yy * 60 + 60;
+                        te++;
+                    }
+                }
+            }
+        }
+        if(k==2) {
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    int xx = j;
+                    int yy = i;
+                    if (khoone[i][j][k].divup == true) {
+                    (*map).divar[te].x1 = 300 + xx * 60;
+                    (*map).divar[te].y1 = yy * 60;
+                    (*map).divar[te].x2 = 300 + xx * 60+60;
+                    (*map).divar[te].y2 = yy * 60 ;
+                        te++;
+                    }
+                    if (khoone[i][j][k].divdon == true) {
+                    (*map).divar[te].x1 = 300 + xx * 60;
+                    (*map).divar[te].y1 = yy * 60+60;
+                    (*map).divar[te].x2 = 300 + xx * 60+60;
+                    (*map).divar[te].y2 = yy * 60 + 60;
+                    te++;
+                    }
+                    if (khoone[i][j][k].divright == true) {
+                    (*map).divar[te].x1 = 300 + xx * 60+60;
+                    (*map).divar[te].y1 = yy * 60;
+                    (*map).divar[te].x2 = 300 + xx * 60+60;
+                    (*map).divar[te].y2 = yy * 60 + 60;
+                    te++;
+                    }
+                    if (khoone[i][j][k].divleft == true) {
+                    (*map).divar[te].x1 = 300 + xx * 60;
+                    (*map).divar[te].y1 = yy * 60;
+                    (*map).divar[te].x2 = 300 + xx * 60;
+                    (*map).divar[te].y2 = yy * 60 + 60;
+                    te++;
+                    }
+                }
+            }
+        }
+        if(k==3){
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    int xx = j;
+                    int yy = i;
+                    if (khoone[i][j][k].divup == true) {
+                (*map).divar[te].x1 = xx * 60;
+                (*map).divar[te].y1 = 300 + yy * 60;
+                (*map).divar[te].x2 = xx * 60+60;
+                (*map).divar[te].y2 = 300 + yy * 60 ;
+                te++;
+                    }
+                    if (khoone[i][j][k].divdon == true) {
+                (*map).divar[te].x1 = xx * 60;
+                (*map).divar[te].y1 = 300 + yy * 60+60;
+                (*map).divar[te].x2 = xx * 60+60;
+                (*map).divar[te].y2 = 300 + yy * 60 + 60;
+                te++;
+                    }
+                    if (khoone[i][j][k].divright == true) {
+                (*map).divar[te].x1 = xx * 60+60;
+                (*map).divar[te].y1 = 300 + yy * 60;
+                (*map).divar[te].x2 = xx * 60+60;
+                (*map).divar[te].y2 = 300 + yy * 60 + 60;
+                        te++;
+                    }
+                    if (khoone[i][j][k].divleft == true) {
+                (*map).divar[te].x1 = xx * 60;
+                (*map).divar[te].y1 = 300 + yy * 60;
+                (*map).divar[te].x2 = xx * 60;
+                (*map).divar[te].y2 = 300 + yy * 60 + 60;
+                        te++;
+                    }
+                }
+            }
+        }
+        if(k==4) {
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    int xx = j;
+                    int yy = i;
+                    if (khoone[i][j][k].divup == true) {
+                        (*map).divar[te].x1 = 300 + xx * 60;
+                    (*map).divar[te].y1 = 300 + yy * 60;
+                    (*map).divar[te].x2 = 300 + xx * 60+60;
+                    (*map).divar[te].y2 = 300 + yy * 60 ;
+                    te++;
+
+                    }
+                    if (khoone[i][j][k].divdon == true) {
+
+                    (*map).divar[te].x1 = 300 + xx * 60;
+                    (*map).divar[te].y1 = 300 + yy * 60+60;
+                    (*map).divar[te].x2 = 300 + xx * 60+60;
+                    (*map).divar[te].y2 = 300 + yy * 60 + 60;
+                    te++;
+                    }
+                    if (khoone[i][j][k].divright == true) {
+                    (*map).divar[te].x1 = 300 + xx * 60+60;
+                    (*map).divar[te].y1 = 300 + yy * 60;
+                    (*map).divar[te].x2 = 300 + xx * 60+60;
+                    (*map).divar[te].y2 = 300 + yy * 60 + 60;
+                    te++;
+                    }
+                    if (khoone[i][j][k].divleft == true) {
+                    (*map).divar[te].x1 = 300 + xx * 60;
+                    (*map).divar[te].y1 = 300 + yy * 60;
+                    (*map).divar[te].x2 = 300 + xx * 60;
+                    (*map).divar[te].y2 = 300 + yy * 60 + 60;
+                    te++;
+                    }
+                }
+            }
+        }
+    }
+    return te;
+}
+void dfs(int x,int y,box khoone[][5][5],int mark[][5],int shomare){
+    mark[x][y]=1;
+        if ( x - 1 >= 0 && mark[x - 1][y] == 0) {
+            khoone[x][y][shomare].divup = false;
+            khoone[x - 1][y][shomare].divdon = false;
+            dfs(x - 1, y, khoone, mark,shomare);
+        }
+        if ( y + 1 <= 4 && mark[x][y + 1] == 0) {
+            khoone[x][y][shomare].divright = false;
+            khoone[x][y + 1][shomare].divleft = false;
+            dfs(x, y + 1, khoone, mark,shomare);
+        }
+        if (y - 1 >= 0 && mark[x][y - 1] == 0) {
+            khoone[x][y][shomare].divleft = false;
+            khoone[x][y - 1][shomare].divright = false;
+            dfs(x, y - 1, khoone, mark,shomare);
+        }
+        if ( x + 1 <= 4 && mark[x + 1][y] == 0) {
+            khoone[x][y][shomare].divdon = false;
+            khoone[x + 1][y][shomare].divup = false;
+            dfs(x + 1, y, khoone, mark,shomare);
+        }
+    return;
 }

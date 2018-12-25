@@ -7,4 +7,5 @@
 
 #include "structha.h"
 void klid(int snake_radius,tanks tank[],int *flagtir,int step,Map map,int *flagtir2);
+int handleEvents();
 #endif //PROJECT_HAREKAT_H

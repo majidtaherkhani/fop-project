@@ -9,6 +9,7 @@
 #include "naghsheha.h"
 #include "harekat.h"
 #include "rasma.h"
+#include <time.h>
 
 const int step = 5;
 const double megh=2*3.14/90;
@@ -16,13 +17,17 @@ const double megh=2*3.14/90;
 #undef main
 #endif
 
+
+
 int main(int argc, char* argv[]) {
+    srand(time(NULL));
     Map map;
+
+    box khoone[5][5][5];
     tanks tank[3];
     int flagtir=0;
     int flagtir2=0;
-    tank[1].x = 50;tank[2].x=550;
-    tank[1].y = 50;tank[2].y=500;
+
     tank[1].zav=0;tank[2].zav=0;
     tank[1].has=true;
     tank[2].has=true;
@@ -41,10 +46,18 @@ int main(int argc, char* argv[]) {
 
     int begining_of_time = SDL_GetTicks();
     const double FPS = 30;
+    maprand(1,khoone);
+    maprand(2,khoone);
+    maprand(3,khoone);
+    maprand(4,khoone);
+    map.tedad=aval(khoone,&map);
+
+    tank[1].x =45 ;tank[2].x=100;
+    tank[1].y =45;tank[2].y=106;
     while (1) {
         int start_ticks = SDL_GetTicks();
 
-        if (handleEvents() ) break;
+        if (handleEvents() ==1) break;
         SDL_Event event;
 
         SDL_SetRenderDrawColor(renderer, 255,255, 255, 255);
@@ -70,8 +83,10 @@ int main(int argc, char* argv[]) {
                 }
             }
         }
-        khoondan(&map);
-        rasm(&map,renderer);
+        //khoondan(&map);
+       // rasm(&map,renderer);
+       rasja(khoone,renderer,&map);
+
 
         klid(snake_radius,tank,&flagtir,step,map,&flagtir2);
 
@@ -84,10 +99,10 @@ int main(int argc, char* argv[]) {
             filledCircleRGBA(renderer, tank[2].x, tank[2].y, snake_radius, 100, 0, 100, 255);
             thickLineRGBA(renderer, tank[2].x, tank[2].y, 2 * snake_radius * cos(tank[2].zav) + tank[2].x,tank[2].y - 2 * snake_radius * sin(tank[2].zav), 5, 100, 0, 100, 255);
         }
-        //char* buffer = malloc(sizeof(char) * 50);
-        //sprintf(buffer, "score: %d   elapsed time: %dms", snake_score,  start_ticks -begining_of_time);
+        char* buffer = malloc(sizeof(char) * 50);
+        sprintf(buffer, "score: %d   elapsed time: %dms", snake_score,  start_ticks -begining_of_time);
         //printf("%s", buffer);
-        //stringRGBA(renderer, 5, 5, buffer, 0, 0, 0, 255);
+        stringRGBA(renderer, 5, 5, buffer, 0, 0, 0, 255);
         SDL_RenderPresent(renderer);
 
         while (SDL_GetTicks() - start_ticks < 1000 / FPS);

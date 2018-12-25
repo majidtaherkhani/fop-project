@@ -28,8 +28,16 @@ typedef struct {
     int y2;
 }Divar;
 typedef struct{
-    Divar divar[50];
+    Divar divar[200];
     int tedad;
 }Map;
+typedef struct{
+    int x;
+    int y;
+    bool divup;
+    bool divdon;
+    bool divright;
+    bool divleft;
+}box;
 
 #endif //PROJECT_STRUCTHA_H
