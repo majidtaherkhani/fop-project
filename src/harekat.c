@@ -11,13 +11,13 @@ void klid(int snake_radius,tanks tank[],int *flagtir,int step,Map map,int *flagt
     int r=snake_radius;
     const double megh=2*3.14/90;
     const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
-    if( currentKeyStates[ SDL_SCANCODE_UP ]&&((tank[1].y)-step*sin(tank[1].zav))>=r && (tank[1].y)-step*sin(tank[1].zav)<=600-r &&(tank[1].x)+step * cos(tank[1].zav)>=r&&(tank[1].x)+step * cos(tank[1].zav)<=600+r&&divarkhor(map,tank[1].x + step * cos(tank[1].zav),tank[1].y - step * sin(tank[1].zav),r)==0/* &&saresh(tank[1].x + step * cos(tank[1].zav),tank[1].y - step * sin(tank[1].zav),tank[1].x + step * cos(tank[1].zav)+2*r*cos(tank[1].zav),tank[1].y - step * sin(tank[1].zav)-2*r*sin(tank[1].zav),map)==0*/)
+    if( currentKeyStates[ SDL_SCANCODE_UP ]&&divarkhor(map,tank[1].x + step * cos(tank[1].zav),tank[1].y - step * sin(tank[1].zav),r)==0/* &&saresh(tank[1].x + step * cos(tank[1].zav),tank[1].y - step * sin(tank[1].zav),tank[1].x + step * cos(tank[1].zav)+2*r*cos(tank[1].zav),tank[1].y - step * sin(tank[1].zav)-2*r*sin(tank[1].zav),map)==0*/)
     {
         tank[1].y -= step * sin(tank[1].zav);
         tank[1].x += step * cos(tank[1].zav);
 
     }
-    if( currentKeyStates[ SDL_SCANCODE_DOWN ]&&(tank[1].y)+step*sin(tank[1].zav)>=r&&(tank[1].y)+step*sin(tank[1].zav)<=600-r&&(tank[1].x)-step*cos(tank[1].zav)>=r&&(tank[1].x)-step*cos(tank[1].zav)<=600+r&&divarkhor(map, tank[1].x -step*cos(tank[1].zav), tank[1].y +step*sin(tank[1].zav),r)==0/* &&saresh(tank[1].x - step * cos(tank[1].zav),tank[1].y + step * sin(tank[1].zav),tank[1].x - step * cos(tank[1].zav)+2*r*cos(tank[1].zav),tank[1].y + step * sin(tank[1].zav)-2*r*sin(tank[1].zav),map)==0*/)
+    if( currentKeyStates[ SDL_SCANCODE_DOWN ]&&divarkhor(map, tank[1].x -step*cos(tank[1].zav), tank[1].y +step*sin(tank[1].zav),r)==0/* &&saresh(tank[1].x - step * cos(tank[1].zav),tank[1].y + step * sin(tank[1].zav),tank[1].x - step * cos(tank[1].zav)+2*r*cos(tank[1].zav),tank[1].y + step * sin(tank[1].zav)-2*r*sin(tank[1].zav),map)==0*/)
     {
         tank[1].y +=step*sin(tank[1].zav);
         tank[1].x -=step*cos(tank[1].zav);
@@ -45,13 +45,13 @@ void klid(int snake_radius,tanks tank[],int *flagtir,int step,Map map,int *flagt
             }
         }
     }
-    if( currentKeyStates[ SDL_SCANCODE_W ]&&((tank[2].y)-step*sin(tank[2].zav))>=r && (tank[2].y)-step*sin(tank[2].zav)<=600-r &&(tank[2].x)+step * cos(tank[2].zav)>=r&&(tank[2].x)+step * cos(tank[2].zav)<=600+r&&divarkhor(map,tank[2].x + step * cos(tank[2].zav),tank[2].y - step * sin(tank[2].zav),r)==0 )
+    if( currentKeyStates[ SDL_SCANCODE_W ]&&divarkhor(map,tank[2].x + step * cos(tank[2].zav),tank[2].y - step * sin(tank[2].zav),r)==0 )
     {
         tank[2].y -= step * sin(tank[2].zav);
         tank[2].x += step * cos(tank[2].zav);
 
     }
-    if( currentKeyStates[ SDL_SCANCODE_S ]&&(tank[2].y)+step*sin(tank[2].zav)>=r&&(tank[2].y)+step*sin(tank[2].zav)<=600-r&&(tank[2].x)-step*cos(tank[2].zav)>=r&&(tank[2].x)-step*cos(tank[2].zav)<=600+r&&divarkhor(map, tank[2].x -step*cos(tank[2].zav), tank[2].y +step*sin(tank[2].zav),r)==0 )
+    if( currentKeyStates[ SDL_SCANCODE_S ]&&divarkhor(map, tank[2].x -step*cos(tank[2].zav), tank[2].y +step*sin(tank[2].zav),r)==0 )
     {
         tank[2].y +=step*sin(tank[2].zav);
         tank[2].x -=step*cos(tank[2].zav);

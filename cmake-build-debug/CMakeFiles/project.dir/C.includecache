@@ -590,7 +590,21 @@ close_code.h
 
 ../sdl2/sdl2-include/close_code.h
 
-/cygdrive/c/Users/majid/Desktop/project/src/naghsheha.c
+/cygdrive/c/Users/majid/Desktop/project/src/harekat.h
+structha.h
+/cygdrive/c/Users/majid/Desktop/project/src/structha.h
+
+/cygdrive/c/Users/majid/Desktop/project/src/naghsheha.h
+structha.h
+/cygdrive/c/Users/majid/Desktop/project/src/structha.h
+
+/cygdrive/c/Users/majid/Desktop/project/src/rasma.h
+structha.h
+/cygdrive/c/Users/majid/Desktop/project/src/structha.h
+SDL2_gfxPrimitives.h
+-
+
+/cygdrive/c/Users/majid/Desktop/project/src/simple_snake.c
 stdio.h
 -
 stdbool.h
@@ -603,18 +617,22 @@ SDL.h
 -
 SDL2_gfxPrimitives.h
 -
+view.h
+/cygdrive/c/Users/majid/Desktop/project/src/view.h
+structha.h
+/cygdrive/c/Users/majid/Desktop/project/src/structha.h
 naghsheha.h
 /cygdrive/c/Users/majid/Desktop/project/src/naghsheha.h
-structha.h
-/cygdrive/c/Users/majid/Desktop/project/src/structha.h
+harekat.h
+/cygdrive/c/Users/majid/Desktop/project/src/harekat.h
+rasma.h
+/cygdrive/c/Users/majid/Desktop/project/src/rasma.h
 time.h
 -
-
-/cygdrive/c/Users/majid/Desktop/project/src/naghsheha.h
-structha.h
-/cygdrive/c/Users/majid/Desktop/project/src/structha.h
 
 /cygdrive/c/Users/majid/Desktop/project/src/structha.h
 stdbool.h
 -
+
+/cygdrive/c/Users/majid/Desktop/project/src/view.h
 

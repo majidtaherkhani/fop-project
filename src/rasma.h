@@ -8,4 +8,5 @@
 #include "structha.h"
 #include <SDL2_gfxPrimitives.h>
 void rasmtir(double snake_radiuse,tanks tank[],SDL_Renderer *renderer,int step,Map map);
+jatank(int adad ,tanks tank[],int tool,int rasm);
 #endif //PROJECT_RASMA_H
