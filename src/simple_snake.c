@@ -16,19 +16,20 @@ const double megh=2*3.14/90;
 #ifdef main
 #undef main
 #endif
-
+int tank1score = 0;
+int tank2score = 0;
 int main(int argc, char* argv[]) {
     int flagasli=1;
-    srand(time(0));
+
     SDL_Init(SDL_INIT_VIDEO);
-    SDL_Window *window = SDL_CreateWindow("workshop", 100, 100, 600, 600, SDL_WINDOW_OPENGL);
+    SDL_Window *window = SDL_CreateWindow("workshop", 100, 100, 750, 500, SDL_WINDOW_OPENGL);
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
     while(1) {
         srand(time(NULL));
         Map map;
-        int toolran = rand() % 200 + 400;
-        int arzran = rand() % 200 + 400;
+        double toolran = rand() % 100 + 500;
+        double arzran = rand() % 100 + 300;
 
         box khoone[5][5][5];
         tanks tank[3];
@@ -50,7 +51,7 @@ int main(int argc, char* argv[]) {
 //        SDL_Window *window = SDL_CreateWindow("workshop", 100, 100,toolran, toolran, SDL_WINDOW_OPENGL);
 //        SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-        int snake_score = 0;
+        //int snake_score=0;
 
         int begining_of_time = SDL_GetTicks();
         const double FPS = 30;
@@ -71,7 +72,7 @@ int main(int argc, char* argv[]) {
             }
             SDL_Event event;
 
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+            SDL_SetRenderDrawColor(renderer, 255,255, 255, 255);
             SDL_RenderClear(renderer);
 
             for (int j = 1; j < 3; j++) {
@@ -84,19 +85,13 @@ int main(int argc, char* argv[]) {
             }
             for (int i = 1; i < 3; i++) {
                 for (int j = 0; j < 5; j++) {
-                    if (tank[1].has == true && tank[i].tir[j].por == true &&
-                        (tank[i].tir[j].x - tank[1].x) * (tank[i].tir[j].x - tank[1].x) +
-                        (tank[i].tir[j].y - tank[1].y) * (tank[i].tir[j].y - tank[1].y) <=
-                        25 / 16 * snake_radius * snake_radius) {
+                    if (tank[i].tir[j].por == true &&tank[1].has == true && (tank[i].tir[j].x - tank[1].x) * (tank[i].tir[j].x - tank[1].x) +(tank[i].tir[j].y - tank[1].y) * (tank[i].tir[j].y - tank[1].y) <=25 / 16 * snake_radius * snake_radius) {
                         tank[1].has = false;
-                        tank[1].tir[j].por = false;
+                        tank[i].tir[j].por = false;
                     }
-                    if (tank[2].has == true && tank[i].tir[j].por == true &&
-                        (tank[i].tir[j].x - tank[2].x) * (tank[i].tir[j].x - tank[2].x) +
-                        (tank[i].tir[j].y - tank[2].y) * (tank[i].tir[j].y - tank[2].y) <=
-                        25 / 16 * snake_radius * snake_radius) {
+                    if ( tank[i].tir[j].por == true &&tank[2].has == true &&(tank[i].tir[j].x - tank[2].x) * (tank[i].tir[j].x - tank[2].x) +(tank[i].tir[j].y - tank[2].y) * (tank[i].tir[j].y - tank[2].y) <=25 / 16 * snake_radius * snake_radius) {
                         tank[2].has = false;
-                        tank[2].tir[j].por = false;
+                        tank[i].tir[j].por = false;
                     }
                 }
             }
@@ -116,16 +111,28 @@ int main(int argc, char* argv[]) {
                 filledCircleRGBA(renderer, tank[2].x, tank[2].y, snake_radius, 100, 0, 100, 255);
                 thickLineRGBA(renderer, tank[2].x, tank[2].y, 2 * snake_radius * cos(tank[2].zav) + tank[2].x,tank[2].y - 2 * snake_radius * sin(tank[2].zav), 5, 100, 0, 100, 255);
             }
-            if (tank[1].has == false || tank[2].has == false)break;
+            if (tank[1].has == false || tank[2].has == false){
+                if(tank[1].has == false){
+                    tank2score++;
+                    break;
+                }
+                tank1score++;
+                break;
+            }
             char *buffer = malloc(sizeof(char) * 50);
-            sprintf(buffer, "score: %d   elapsed time: %dms", snake_score, start_ticks - begining_of_time);
+            char *biffer = malloc(sizeof(char) * 50);
+            sprintf(buffer, "blue: %d "/* elapsed time: %dms"*/, tank1score/*, start_ticks - begining_of_time*/);
+            sprintf(biffer, "violet: %d " /*elapsed time: %dms*/, tank2score/*, start_ticks - begining_of_time*/);
+
             //printf("%s", buffer);
-            stringRGBA(renderer, 5, 5, buffer, 0, 0, 0, 255);
+            stringRGBA(renderer, 200, 450, buffer, 0, 100, 100, 255);
+            stringRGBA(renderer,500,450,biffer,100,0,100,255);
+
             SDL_RenderPresent(renderer);
 
             while (SDL_GetTicks() - start_ticks < 1000 / FPS);
         }
-        if (!flagasli)break;
+        if (!flagasli||tank1score==20||tank2score==20)break;
     }
 
     SDL_DestroyRenderer(renderer);

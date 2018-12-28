@@ -31,35 +31,39 @@ void rasm(Map *map,SDL_Renderer *renderer){
         thickLineRGBA(renderer,map->divar[i].x1,map->divar[i].y1,map->divar[i].x2,map->divar[i].y2,5,0,0,0,255);
     }
 }
-int divarkhor(Map map,int x,int y,int r){
+int divarkhor(Map map, double x, double y, double r){
+    int rast=0, chap=0;
     for(int i=0;i<map.tedad;i++){
         if(map.divar[i].x1==map.divar[i].x2){
             if(map.divar[i].y1>y-r){
                 if(y+r>map.divar[i].y1&&abs(x-map.divar[i].x1)<r){
-                    return 1;
+                    rast=1;
                 }
 
             }
             else{
                 if(map.divar[i].y2>y-r&&abs(x-map.divar[i].x1)<r){
-                    return 1;
+                    rast= 1;
                 }
             }
         }
         else{
             if(x-r>map.divar[i].x1){
                 if(x-r<map.divar[i].x2&&abs(y-map.divar[i].y1)<r){
-                    return 2;
+                    chap= 1;
                 }
             }
             else{
                 if(map.divar[i].x1<x+r&&abs(y-map.divar[i].y1)<r){
-                    return 2;
+                    chap= 1;
                 }
             }
         }
     }
-    return 0;
+    if(rast==0&&chap==0)return 0;
+    if(rast==1&&chap==1)return 5;
+    if(rast==1)return 1;
+    if(chap==1)return 2;
 }
 
 int saresh(int x,int y,int x2,int y2,Map map){
@@ -145,7 +149,8 @@ void maprand(int shomare,box khoone[][5][5]){
     dfs(rand()%5,rand()%5,khoone,mark,shomare);
     dor(shomare,khoone);
 }
-void rasja(box khoone[][5][5],SDL_Renderer *renderer,Map *map,int tool,int arz) {
+void rasja(box khoone[][5][5],SDL_Renderer *renderer,Map *map, double tool, double arz) {
+    double jb=(750-tool)/2;
     int te=0;
     for(int k=1;k<=4;k++){
         if(k==1){
@@ -154,19 +159,19 @@ void rasja(box khoone[][5][5],SDL_Renderer *renderer,Map *map,int tool,int arz) 
                 int xx = j;
                 int yy = i;
                 if (khoone[i][j][k].divup == true) {
-                    thickLineRGBA(renderer, xx *tool/10, yy*arz/10, xx * tool/10 + tool/10, yy * arz/10, 3,40, 20,20, 255);
+                    thickLineRGBA(renderer, jb+xx *tool/10, yy*arz/10, jb+xx * tool/10 + tool/10, yy * arz/10, 2,80, 80,80, 255);
 //
                 }
                 if (khoone[i][j][k].divdon == true) {
-                    thickLineRGBA(renderer, xx * tool/10, yy * arz/10 + arz/10, xx * tool/10 + tool/10, yy * arz/10 + arz/10,3, 40, 20, 20, 255);
+                    thickLineRGBA(renderer, jb+xx * tool/10, yy * arz/10 + arz/10, jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
 //
                 }
                 if (khoone[i][j][k].divright == true) {
-                    thickLineRGBA(renderer, xx * tool/10 + tool/10, yy * arz/10, xx * tool/10 + tool/10, yy * arz/10 + arz/10,3, 40, 20, 20, 255);
+                    thickLineRGBA(renderer, jb+xx * tool/10 + tool/10, yy * arz/10, jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
 //
                 }
                 if (khoone[i][j][k].divleft == true) {
-                    thickLineRGBA(renderer, xx * tool/10, yy * arz/10, xx * tool/10, yy *arz/10 + arz/10, 3,40, 20, 20, 255);
+                    thickLineRGBA(renderer, jb+xx * tool/10, yy * arz/10, jb+xx * tool/10, yy *arz/10 + arz/10, 2,80,80,80, 255);
 //
                 }
             }
@@ -178,19 +183,19 @@ void rasja(box khoone[][5][5],SDL_Renderer *renderer,Map *map,int tool,int arz) 
                 int xx = j;
                 int yy = i;
                 if (khoone[i][j][k].divup == true) {
-                    thickLineRGBA(renderer, tool/2 + xx * tool/10, yy * arz/10, tool/2 + xx * tool/10 + tool/10, yy * arz/10,3, 40, 20, 20, 255);
+                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10,2, 80, 80, 80, 255);
 //
                 }
                 if (khoone[i][j][k].divdon == true) {
-                    thickLineRGBA(renderer, tool/2 + xx * tool/10, yy * arz/10 + arz/10, tool/2 + xx * tool/10 + tool/10, yy * arz/10 + arz/10,3, 40, 20, 20, 255);
+                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, yy * arz/10 + arz/10, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
 //
                 }
                 if (khoone[i][j][k].divright == true) {
-                    thickLineRGBA(renderer, tool/2 + xx * tool/10 + tool/10, yy * arz/10, tool/2 + xx * tool/10 + tool/10, yy * arz/10 + arz/10,3, 40, 20, 20, 255);
+                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
 //
                 }
                 if (khoone[i][j][k].divleft == true) {
-                    thickLineRGBA(renderer, tool/2 + xx * tool/10, yy * arz/10, tool/2 + xx * tool/10, yy * arz/10 +arz/10,3, 40, 20, 20, 255);
+                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, yy * arz/10, tool/2 + jb+xx * tool/10, yy * arz/10 +arz/10,2, 80, 80, 80, 255);
 //
                 }
             }
@@ -202,19 +207,19 @@ void rasja(box khoone[][5][5],SDL_Renderer *renderer,Map *map,int tool,int arz) 
             int xx = j;
             int yy = i;
             if (khoone[i][j][k].divup == true) {
-                thickLineRGBA(renderer, xx * tool/10, arz/2 + yy * arz/10, xx * tool/10 + tool/10, arz/2 + yy * arz/10,3, 40, 20, 20, 255);
+                thickLineRGBA(renderer, jb+xx * tool/10, arz/2 + yy * arz/10, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10,2, 80, 80, 80, 255);
 //
             }
             if (khoone[i][j][k].divdon == true) {
-                thickLineRGBA(renderer, xx * tool/10, arz/2 + yy * arz/10 + arz/10, xx * tool/10 + tool/10, arz/2 + yy * arz/10 + arz/10,3, 40, 20, 20, 255);
+                thickLineRGBA(renderer, jb+xx * tool/10, arz/2 + yy * arz/10 + arz/10, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10 + arz/10,2, 80, 80, 80, 255);
 //
             }
             if (khoone[i][j][k].divright == true) {
-                thickLineRGBA(renderer, xx * tool/10 + tool/10, arz/2 + yy * arz/10, xx * tool/10 + tool/10, arz/2 + yy * arz/10 + arz/10,3, 40, 20, 20, 255);
+                thickLineRGBA(renderer, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10 + arz/10,2, 80, 80, 80, 255);
 //
             }
             if (khoone[i][j][k].divleft == true) {
-                thickLineRGBA(renderer, xx * tool/10, arz/2 + yy * arz/10, xx * tool/10, arz/2 + yy * arz/10 + arz/10, 3,40, 20, 20, 255);
+                thickLineRGBA(renderer, jb+xx * tool/10, arz/2 + yy * arz/10, jb+xx * tool/10, arz/2 + yy * arz/10 + arz/10, 2,80, 80, 80, 255);
 //
             }
         }
@@ -226,27 +231,28 @@ void rasja(box khoone[][5][5],SDL_Renderer *renderer,Map *map,int tool,int arz) 
                 int xx = j;
                 int yy = i;
                 if (khoone[i][j][k].divup == true) {
-                    thickLineRGBA(renderer, tool/2 + xx * tool/10, arz/2 + yy * arz/10, tool/2 + xx * tool/10 + tool/10, arz/2 + yy * arz/10,3 ,40, 20, 20, 255);
+                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, arz/2 + yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10,2 ,80, 80, 80, 255);
 //
                 }
                 if (khoone[i][j][k].divdon == true) {
-                    thickLineRGBA(renderer, tool/2 + xx * tool/10, arz/2 + yy *arz/10 + arz/10, tool/2 + xx * tool/10 + tool/10, arz/2 + yy * arz/10 +arz/10,3 ,40, 20,20,255);
+                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, arz/2 + yy *arz/10 + arz/10, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10 +arz/10,2 ,80, 80,80,255);
 //
                 }
                 if (khoone[i][j][k].divright == true) {
-                    thickLineRGBA(renderer, tool/2 + xx * tool/10 + tool/10, arz/2 + yy * arz/10, tool/2 + xx * tool/10 + tool/10, arz/2 + yy *arz/10 + arz/10,3 ,40, 20,20,255);
+                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy *arz/10 + arz/10,2 ,80, 80,80,255);
 //
                 }
                 if (khoone[i][j][k].divleft == true) {
-                    thickLineRGBA(renderer, tool/2 + xx * tool/10, arz/2 + yy * arz/10, tool/2 + xx * tool/10, arz/2 + yy *arz/10 + arz/10,3, 40, 20, 20, 255);
+                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, arz/2 + yy * arz/10, tool/2 + jb+xx * tool/10, arz/2 + yy *arz/10 + arz/10,2, 80, 80, 80, 255);
                 }
             }
         }
     }
     }
 }
-int aval(box khoone[][5][5],Map *map,int tool,int arz) {
+int aval(box khoone[][5][5],Map *map,double  tool, double arz) {
     int te=0;
+    double jb=(750-tool)/2;
     for(int k=1;k<=4;k++){
         if(k==1){
             for (int i = 0; i < 5; i++) {
@@ -254,30 +260,30 @@ int aval(box khoone[][5][5],Map *map,int tool,int arz) {
                     int xx = j;
                     int yy = i;
                     if (khoone[i][j][k].divup == true) {
-                    (*map).divar[te].x1 = xx * tool/10;
+                    (*map).divar[te].x1 = jb+xx * tool/10;
                     (*map).divar[te].y1 = yy * arz/10;
-                    (*map).divar[te].x2 = xx * tool/10 + tool/10;
+                    (*map).divar[te].x2 = jb+xx * tool/10 + tool/10;
                     (*map).divar[te].y2 = yy * arz/10;
                         te++;
                     }
                     if (khoone[i][j][k].divdon == true) {
-                    (*map).divar[te].x1 = xx * tool/10;
+                    (*map).divar[te].x1 = jb+xx * tool/10;
                     (*map).divar[te].y1 = yy * arz/10 + arz/10;
-                    (*map).divar[te].x2 = xx * tool/10 + tool/10;
+                    (*map).divar[te].x2 = jb+xx * tool/10 + tool/10;
                     (*map).divar[te].y2 = yy * arz/10 + arz/10;
                         te++;
                     }
                     if (khoone[i][j][k].divright == true) {
-                    (*map).divar[te].x1 = xx * tool/10 + tool/10;
+                    (*map).divar[te].x1 = jb+xx * tool/10 + tool/10;
                     (*map).divar[te].y1 = yy * arz/10;
-                    (*map).divar[te].x2 = xx * tool/10 + tool/10;
+                    (*map).divar[te].x2 = jb+xx * tool/10 + tool/10;
                     (*map).divar[te].y2 = yy * arz/10 + arz/10;
                         te++;
                     }
                     if (khoone[i][j][k].divleft == true) {
-                    (*map).divar[te].x1 = xx * tool/10;
+                    (*map).divar[te].x1 = jb+xx * tool/10;
                     (*map).divar[te].y1 = yy * arz/10;
-                    (*map).divar[te].x2 = xx * tool/10;
+                    (*map).divar[te].x2 = jb+xx * tool/10;
                     (*map).divar[te].y2 = yy * arz/10 + arz/10;
                         te++;
                     }
@@ -290,30 +296,30 @@ int aval(box khoone[][5][5],Map *map,int tool,int arz) {
                     int xx = j;
                     int yy = i;
                     if (khoone[i][j][k].divup == true) {
-                    (*map).divar[te].x1 = tool/2 + xx * tool/10;
+                    (*map).divar[te].x1 = tool/2 + jb+xx * tool/10;
                     (*map).divar[te].y1 = yy * arz/10;
-                    (*map).divar[te].x2 = tool/2 + xx * tool/10+tool/10;
+                    (*map).divar[te].x2 = tool/2 + jb+xx * tool/10+tool/10;
                     (*map).divar[te].y2 = yy * arz/10 ;
                         te++;
                     }
                     if (khoone[i][j][k].divdon == true) {
-                    (*map).divar[te].x1 = tool/2 + xx * tool/10;
+                    (*map).divar[te].x1 = tool/2 + jb+xx * tool/10;
                     (*map).divar[te].y1 = yy * arz/10+arz/10;
-                    (*map).divar[te].x2 = tool/2 + xx * tool/10+tool/10;
+                    (*map).divar[te].x2 = tool/2 + jb+xx * tool/10+tool/10;
                     (*map).divar[te].y2 = yy * arz/10 + arz/10;
                     te++;
                     }
                     if (khoone[i][j][k].divright == true) {
-                    (*map).divar[te].x1 = tool/2 + xx * tool/10+tool/10;
+                    (*map).divar[te].x1 = tool/2 + jb+xx * tool/10+tool/10;
                     (*map).divar[te].y1 = yy * arz/10;
-                    (*map).divar[te].x2 = tool/2 + xx * tool/10+tool/10;
+                    (*map).divar[te].x2 = tool/2 + jb+xx * tool/10+tool/10;
                     (*map).divar[te].y2 = yy * arz/10 + arz/10;
                     te++;
                     }
                     if (khoone[i][j][k].divleft == true) {
-                    (*map).divar[te].x1 = tool/2 + xx * tool/10;
+                    (*map).divar[te].x1 = tool/2 + jb+xx * tool/10;
                     (*map).divar[te].y1 = yy * arz/10;
-                    (*map).divar[te].x2 = tool/2 + xx * tool/10;
+                    (*map).divar[te].x2 = tool/2 + jb+xx * tool/10;
                     (*map).divar[te].y2 = yy * arz/10 + arz/10;
                     te++;
                     }
@@ -326,30 +332,30 @@ int aval(box khoone[][5][5],Map *map,int tool,int arz) {
                     int xx = j;
                     int yy = i;
                     if (khoone[i][j][k].divup == true) {
-                (*map).divar[te].x1 = xx * tool/10;
+                (*map).divar[te].x1 = jb+xx * tool/10;
                 (*map).divar[te].y1 = arz/2 + yy * arz/10;
-                (*map).divar[te].x2 = xx * tool/10+tool/10;
+                (*map).divar[te].x2 = jb+xx * tool/10+tool/10;
                 (*map).divar[te].y2 = arz/2 + yy * arz/10 ;
                 te++;
                     }
                     if (khoone[i][j][k].divdon == true) {
-                (*map).divar[te].x1 = xx * tool/10;
+                (*map).divar[te].x1 = jb+xx * tool/10;
                 (*map).divar[te].y1 = arz/2 + yy * arz/10+arz/10;
-                (*map).divar[te].x2 = xx * tool/10+tool/10;
+                (*map).divar[te].x2 = jb+xx * tool/10+tool/10;
                 (*map).divar[te].y2 = arz/2 + yy * arz/10 + arz/10;
                 te++;
                     }
                     if (khoone[i][j][k].divright == true) {
-                (*map).divar[te].x1 = xx * tool/10+tool/10;
+                (*map).divar[te].x1 = jb+xx * tool/10+tool/10;
                 (*map).divar[te].y1 = arz/2 + yy * arz/10;
-                (*map).divar[te].x2 = xx * tool/10+tool/10;
+                (*map).divar[te].x2 = jb+xx * tool/10+tool/10;
                 (*map).divar[te].y2 = arz/2 + yy * arz/10 + arz/10;
                         te++;
                     }
                     if (khoone[i][j][k].divleft == true) {
-                (*map).divar[te].x1 = xx * tool/10;
+                (*map).divar[te].x1 = jb+xx * tool/10;
                 (*map).divar[te].y1 = arz/2 + yy * arz/10;
-                (*map).divar[te].x2 = xx * tool/10;
+                (*map).divar[te].x2 = jb+xx * tool/10;
                 (*map).divar[te].y2 = arz/2 + yy * arz/10 + arz/10;
                         te++;
                     }
@@ -362,32 +368,32 @@ int aval(box khoone[][5][5],Map *map,int tool,int arz) {
                     int xx = j;
                     int yy = i;
                     if (khoone[i][j][k].divup == true) {
-                        (*map).divar[te].x1 = tool/2 + xx * tool/10;
+                        (*map).divar[te].x1 = tool/2 + jb+xx * tool/10;
                     (*map).divar[te].y1 = arz/2 + yy * arz/10;
-                    (*map).divar[te].x2 = tool/2 + xx * tool/10+tool/10;
+                    (*map).divar[te].x2 = tool/2 + jb+xx * tool/10+tool/10;
                     (*map).divar[te].y2 = arz/2 + yy * arz/10 ;
                     te++;
 
                     }
                     if (khoone[i][j][k].divdon == true) {
 
-                    (*map).divar[te].x1 = tool/2 + xx * tool/10;
+                    (*map).divar[te].x1 = tool/2 + jb+xx * tool/10;
                     (*map).divar[te].y1 = arz/2 + yy * arz/10+arz/10;
-                    (*map).divar[te].x2 = tool/2 + xx * tool/10+tool/10;
+                    (*map).divar[te].x2 = tool/2 + jb+xx * tool/10+tool/10;
                     (*map).divar[te].y2 = arz/2 + yy * arz/10 + arz/10;
                     te++;
                     }
                     if (khoone[i][j][k].divright == true) {
-                    (*map).divar[te].x1 = tool/2 + xx * tool/10+tool/10;
+                    (*map).divar[te].x1 = tool/2 + jb+xx * tool/10+tool/10;
                     (*map).divar[te].y1 = arz/2 + yy * arz/10;
-                    (*map).divar[te].x2 = tool/2 + xx * tool/10+tool/10;
+                    (*map).divar[te].x2 = tool/2 + jb+xx * tool/10+tool/10;
                     (*map).divar[te].y2 = arz/2 + yy * arz/10 + arz/10;
                     te++;
                     }
                     if (khoone[i][j][k].divleft == true) {
-                    (*map).divar[te].x1 = tool/2 + xx * tool/10;
+                    (*map).divar[te].x1 = tool/2 + jb+xx * tool/10;
                     (*map).divar[te].y1 = arz/2 + yy * arz/10;
-                    (*map).divar[te].x2 = tool/2 + xx * tool/10;
+                    (*map).divar[te].x2 = tool/2 + jb+xx * tool/10;
                     (*map).divar[te].y2 = arz/2 + yy * arz/10 + arz/10;
                     te++;
                     }

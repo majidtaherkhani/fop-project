@@ -14,18 +14,20 @@
     <list default="true" id="f7793e9d-9434-4f27-b231-9f46aa1440b3" name="Default Changelist" comment="اتمام فاز یک">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/harekat.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/harekat.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/naghsheha.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/rasma.c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/simple_snake.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/harekat.c.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/naghsheha.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/naghsheha.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/rasma.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/rasma.c.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/simple_snake.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/project.dir/src/simple_snake.c.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/libproject.dll.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libproject.dll.a" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/project.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/project.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/harekat.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/harekat.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/harekat.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/harekat.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/naghsheha.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/naghsheha.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/naghsheha.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/naghsheha.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rasma.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/rasma.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rasma.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/rasma.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/simple_snake.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/simple_snake.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/structha.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/structha.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,22 +54,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/rasma.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
-              <folding>
-                <element signature="e#91#112#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/simple_snake.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="127" column="13" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="13" />
+            <state relative-caret-position="-117">
+              <caret line="123" column="29" selection-start-line="123" selection-start-column="29" selection-end-line="123" selection-end-column="29" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -76,10 +66,31 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rasma.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="50" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
+              <folding>
+                <element signature="e#91#112#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/structha.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="680">
+              <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rasma.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="145">
-              <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
+            <state relative-caret-position="680">
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
               <folding>
                 <element signature="e#41#59#0" expanded="true" />
               </folding>
@@ -88,12 +99,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/harekat.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/harekat.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+            <state relative-caret-position="127">
+              <caret line="25" column="449" selection-start-line="25" selection-start-column="449" selection-end-line="25" selection-end-column="449" />
               <folding>
-                <element signature="e#41#72#0" expanded="true" />
+                <element signature="e#41#58#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -102,8 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/naghsheha.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1814">
-              <caret line="160" column="75" selection-start-line="160" selection-start-column="75" selection-end-line="160" selection-end-column="75" />
+            <state relative-caret-position="3613">
+              <caret line="254" column="10" selection-start-line="254" selection-start-column="10" selection-end-line="254" selection-end-column="10" />
               <folding>
                 <element signature="e#41#59#0" expanded="true" />
               </folding>
@@ -114,26 +134,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/naghsheha.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="71" selection-start-line="15" selection-start-column="71" selection-end-line="15" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/structha.h">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="77" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="77" />
+            <state relative-caret-position="238">
+              <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -159,7 +161,6 @@
       <find>zav</find>
       <find>renderer</find>
       <find>por</find>
-      <find>sna</find>
       <find>klid</find>
       <find>snake_x</find>
       <find>snake_y</find>
@@ -173,6 +174,10 @@
       <find>300</find>
       <find>30</find>
       <find>yy * tool</find>
+      <find>xx</find>
+      <find>50</find>
+      <find>int</find>
+      <find>sna</find>
     </findStrings>
     <replaceStrings>
       <replace>tank.zav</replace>
@@ -193,6 +198,12 @@
       <replace>tool/2</replace>
       <replace>tool/20</replace>
       <replace>yy * arz</replace>
+      <replace>jb+xx</replace>
+      <replace>0</replace>
+      <replace>100</replace>
+      <replace>220</replace>
+      <replace>80</replace>
+      <replace>double</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -207,14 +218,14 @@
         <option value="$PROJECT_DIR$/src/khordan.h" />
         <option value="$PROJECT_DIR$/src/khordan.c" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/src/harekat.h" />
         <option value="$PROJECT_DIR$/src/structha.h" />
-        <option value="$PROJECT_DIR$/src/harekat.c" />
-        <option value="$PROJECT_DIR$/src/naghsheha.h" />
         <option value="$PROJECT_DIR$/src/rasma.c" />
         <option value="$PROJECT_DIR$/src/rasma.h" />
+        <option value="$PROJECT_DIR$/src/harekat.h" />
+        <option value="$PROJECT_DIR$/src/naghsheha.h" />
         <option value="$PROJECT_DIR$/src/naghsheha.c" />
         <option value="$PROJECT_DIR$/src/simple_snake.c" />
+        <option value="$PROJECT_DIR$/src/harekat.c" />
       </list>
     </option>
   </component>
@@ -230,6 +241,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -246,7 +258,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -312,7 +323,10 @@
       <workItem from="1545819840193" duration="1809000" />
       <workItem from="1545823032399" duration="1678000" />
       <workItem from="1545841266055" duration="261000" />
-      <workItem from="1545842215823" duration="2136000" />
+      <workItem from="1545842215823" duration="3407000" />
+      <workItem from="1545847132705" duration="6321000" />
+      <workItem from="1545936356702" duration="11539000" />
+      <workItem from="1546019689841" duration="3628000" />
     </task>
     <task id="LOCAL-00001" summary="اتمام فاز یک">
       <created>1545567646344</created>
@@ -325,18 +339,18 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="167556000" />
+    <option name="totallyTimeSpent" value="190315000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.34871408" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.36459908" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1767594" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.17839608" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.45171848" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -368,34 +382,24 @@
     <entry file="file://$PROJECT_DIR$/src/khordan.c" />
     <entry file="file://$PROJECT_DIR$/src/structha.c" />
     <entry file="file://$PROJECT_DIR$/src/test.h" />
-    <entry file="file://$PROJECT_DIR$/src/harekat.h">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/harekat.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-          <folding>
-            <element signature="e#41#72#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="77" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="77" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/structha.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        <state relative-caret-position="680">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/src/naghsheha.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="77" selection-start-line="15" selection-start-column="77" selection-end-line="15" selection-end-column="77" />
+        <state relative-caret-position="238">
+          <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -409,37 +413,20 @@
     <entry file="file://$PROJECT_DIR$/src/view.c">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/naghsheha.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="71" selection-start-line="15" selection-start-column="71" selection-end-line="15" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rasma.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
-          <folding>
-            <element signature="e#41#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/rasma.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
+          <caret line="10" column="50" selection-start-line="10" selection-start-column="50" selection-end-line="10" selection-end-column="50" />
           <folding>
             <element signature="e#91#112#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/naghsheha.c">
+    <entry file="file://$PROJECT_DIR$/src/rasma.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1814">
-          <caret line="160" column="75" selection-start-line="160" selection-start-column="75" selection-end-line="160" selection-end-column="75" />
+        <state relative-caret-position="680">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
           <folding>
             <element signature="e#41#59#0" expanded="true" />
           </folding>
@@ -448,10 +435,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/simple_snake.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="127" column="13" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="13" />
+        <state relative-caret-position="-117">
+          <caret line="123" column="29" selection-start-line="123" selection-start-column="29" selection-end-line="123" selection-end-column="29" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/naghsheha.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3613">
+          <caret line="254" column="10" selection-start-line="254" selection-start-column="10" selection-end-line="254" selection-end-column="10" />
+          <folding>
+            <element signature="e#41#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/harekat.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/harekat.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="25" column="449" selection-start-line="25" selection-start-column="449" selection-end-line="25" selection-end-column="449" />
+          <folding>
+            <element signature="e#41#58#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -22,18 +22,18 @@ typedef struct{
     bool has;
 }tanks;
 typedef struct {
-    int x1;
-    int x2;
-    int y1;
-    int y2;
+    double x1;
+    double x2;
+    double y1;
+    double y2;
 }Divar;
 typedef struct{
     Divar divar[200];
     int tedad;
 }Map;
 typedef struct{
-    int x;
-    int y;
+    double x;
+    double y;
     bool divup;
     bool divdon;
     bool divright;
