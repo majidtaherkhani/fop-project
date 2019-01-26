@@ -151,6 +151,7 @@ CMakeFiles/project.dir/src/rasma.c.o
  /cygdrive/c/Users/majid/Desktop/project/src/structha.h
 CMakeFiles/project.dir/src/simple_snake.c.o
  ../sdl2/sdl2-gfx-include/SDL2_gfxPrimitives.h
+ ../sdl2/sdl2-gfx-include/SDL2_imageFilter.h
  ../sdl2/sdl2-include/SDL.h
  ../sdl2/sdl2-include/SDL_assert.h
  ../sdl2/sdl2-include/SDL_atomic.h
@@ -188,6 +189,7 @@ CMakeFiles/project.dir/src/simple_snake.c.o
  ../sdl2/sdl2-include/SDL_stdinc.h
  ../sdl2/sdl2-include/SDL_surface.h
  ../sdl2/sdl2-include/SDL_system.h
+ ../sdl2/sdl2-include/SDL_test_images.h
  ../sdl2/sdl2-include/SDL_thread.h
  ../sdl2/sdl2-include/SDL_timer.h
  ../sdl2/sdl2-include/SDL_touch.h

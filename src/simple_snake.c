@@ -10,6 +10,8 @@
 #include "harekat.h"
 #include "rasma.h"
 #include <time.h>
+#include <SDL_test_images.h>
+#include <SDL2_imageFilter.h>
 
 const int step = 5;
 const double megh=2*3.14/90;
@@ -24,6 +26,7 @@ int main(int argc, char* argv[]) {
     SDL_Init(SDL_INIT_VIDEO);
     SDL_Window *window = SDL_CreateWindow("workshop", 100, 100, 750, 500, SDL_WINDOW_OPENGL);
     SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
 
     while(1) {
         srand(time(NULL));
@@ -105,11 +108,11 @@ int main(int argc, char* argv[]) {
             rasmtir(snake_radius, tank, renderer, step, map);
             if (tank[1].has == true) {
                 filledCircleRGBA(renderer, tank[1].x, tank[1].y, snake_radius, 0, 100, 100, 255);
-                thickLineRGBA(renderer, tank[1].x, tank[1].y, 2 * snake_radius * cos(tank[1].zav) + tank[1].x,tank[1].y - 2 * snake_radius * sin(tank[1].zav), 5, 0, 100, 100, 255);
+                thickLineRGBA(renderer, tank[1].x, tank[1].y, 1.5 * snake_radius * cos(tank[1].zav) + tank[1].x,tank[1].y - 1.5 * snake_radius * sin(tank[1].zav), 5, 0, 100, 100, 255);
             }
             if (tank[2].has == true) {
                 filledCircleRGBA(renderer, tank[2].x, tank[2].y, snake_radius, 100, 0, 100, 255);
-                thickLineRGBA(renderer, tank[2].x, tank[2].y, 2 * snake_radius * cos(tank[2].zav) + tank[2].x,tank[2].y - 2 * snake_radius * sin(tank[2].zav), 5, 100, 0, 100, 255);
+                thickLineRGBA(renderer, tank[2].x, tank[2].y, 1.5 * snake_radius * cos(tank[2].zav) + tank[2].x,tank[2].y - 1.5 * snake_radius * sin(tank[2].zav), 5, 100, 0, 100, 255);
             }
             if (tank[1].has == false || tank[2].has == false){
                 if(tank[1].has == false){
@@ -119,6 +122,9 @@ int main(int argc, char* argv[]) {
                 tank1score++;
                 break;
             }
+           // SDL_Surface *image=SDL_LoadBMP("C:\\Users\\majid\\Desktop\\IMG_20180121_0022.jpg");
+            //SDL_Texture * texture=SDL_CreateTextureFromSurface(renderer,image);
+
             char *buffer = malloc(sizeof(char) * 50);
             char *biffer = malloc(sizeof(char) * 50);
             sprintf(buffer, "blue: %d "/* elapsed time: %dms"*/, tank1score/*, start_ticks - begining_of_time*/);
@@ -127,7 +133,7 @@ int main(int argc, char* argv[]) {
             //printf("%s", buffer);
             stringRGBA(renderer, 200, 450, buffer, 0, 100, 100, 255);
             stringRGBA(renderer,500,450,biffer,100,0,100,255);
-
+            //SDL_RenderCopy(renderer,texture,NULL,NULL);
             SDL_RenderPresent(renderer);
 
             while (SDL_GetTicks() - start_ticks < 1000 / FPS);

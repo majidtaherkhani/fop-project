@@ -6,7 +6,8 @@
 #define PROJECT_NAGHSHEHA_H
 
 #include "structha.h"
-
+int min(double a, double b);
+int max(double a, double b);
 void khoondan(Map *map);
 void rasm(Map *map,SDL_Renderer *renderer);
 int divarkhor(Map map, double x, double y,double_t r);

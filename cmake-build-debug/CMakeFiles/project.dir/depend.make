@@ -150,6 +150,7 @@ CMakeFiles/project.dir/src/rasma.c.o: ../src/rasma.h
 CMakeFiles/project.dir/src/rasma.c.o: ../src/structha.h
 
 CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-gfx-include/SDL2_gfxPrimitives.h
+CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-gfx-include/SDL2_imageFilter.h
 CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-include/SDL.h
 CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-include/SDL_assert.h
 CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-include/SDL_atomic.h
@@ -187,6 +188,7 @@ CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-include/SDL_shape.h
 CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-include/SDL_stdinc.h
 CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-include/SDL_surface.h
 CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-include/SDL_system.h
+CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-include/SDL_test_images.h
 CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-include/SDL_thread.h
 CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-include/SDL_timer.h
 CMakeFiles/project.dir/src/simple_snake.c.o: ../sdl2/sdl2-include/SDL_touch.h

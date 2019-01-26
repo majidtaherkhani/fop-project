@@ -10,7 +10,14 @@
 #include "naghsheha.h"
 #include "structha.h"
 #include<time.h>
-
+int min(double a, double b){
+    if(a>b)return b;
+    return a;
+}
+int max(double a, double b){
+    if(a>b)return a;
+    return b;
+}
 void khoondan(Map *map){
     FILE *file;
     file=fopen("C:\\Users\\majid\\Desktop\\majijjjj.txt","r");
@@ -66,43 +73,43 @@ int divarkhor(Map map, double x, double y, double r){
     if(chap==1)return 2;
 }
 
-int saresh(int x,int y,int x2,int y2,Map map){
+int saresh(int x1,int y1,int x2,int y2,Map map){
     bool amood;
     double mlool;
-    if(x2!=x) {
+    if(x2==x1) {
         amood=true;
-        mlool = (y2 - y) / (x2 - x);
     }
     else{
         amood=false;
+        mlool = (y2 - y1) / (x2 - x1);
     }
     for(int i=0;i<map.tedad;i++){
         if(map.divar[i].x1==map.divar[i].x2){
-            if(amood==true&&x==map.divar[i].x2){
-                if((map.divar[i].y1<y&&y<map.divar[i].y2)||(map.divar[i].y1<y2&&y2<map.divar[i].y2)){
+            if(amood==true&&x1==map.divar[i].x2){
+                if((map.divar[i].y1<y1&&y1<map.divar[i].y2)||(map.divar[i].y1<y2&&y2<map.divar[i].y2)){
                     return 1;
                 }
             }
-            if(amood==false&&map.divar[i].y1<(mlool*(map.divar[i].x1-x)+y)&&(mlool*(map.divar[i].x1-x)+y)<map.divar[i].y2){
+            if(amood==false&&map.divar[i].y1<(mlool*(map.divar[i].x1-x1)+y1)&&(mlool*(map.divar[i].x1-x1)+y1)<map.divar[i].y2){
                 return 1;
             }
 
         }
         if(map.divar[i].y1==map.divar[i].y2){
             if(amood==false&&mlool==0){
-                if(y==map.divar[i].y1){
-                    if((map.divar[i].x1<x&&x<map.divar[i].x2)||(map.divar[i].x1<x2&&x2<map.divar[i].x2)){
+                if(y1==map.divar[i].y1){
+                    if((map.divar[i].x1<x1&&x1<map.divar[i].x2)||(map.divar[i].x1<x2&&x2<map.divar[i].x2)){
                         return 1;
                     }
                 }
             }
             if(amood==true){
-                if(map.divar[i].x1<x&&map.divar[i].x2>x){
+                if(map.divar[i].x1<x1&&map.divar[i].x2>x1&&map.divar[i].y2>min(y1,y2)&&map.divar[i].y2<max(y1,y2)) {
                     return 1;
                 }
             }
             if(amood==false&&mlool!=0){
-                if(map.divar[i].x1<(map.divar[i].y1-y)/mlool+x&&map.divar[i].x2>(map.divar[i].y1-y)/mlool+x){
+                if(map.divar[i].x1<(map.divar[i].y1-y1)/mlool+x1&&map.divar[i].x2>(map.divar[i].y1-y1)/mlool+x1){
                     return 1;
                 }
             }
@@ -250,7 +257,7 @@ void rasja(box khoone[][5][5],SDL_Renderer *renderer,Map *map, double tool, doub
     }
     }
 }
-int aval(box khoone[][5][5],Map *map,double  tool, double arz) {
+int aval(box khoone[][5][5],Map *map,double  tool, double arz){
     int te=0;
     double jb=(750-tool)/2;
     for(int k=1;k<=4;k++){
