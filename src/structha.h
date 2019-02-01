@@ -18,7 +18,9 @@ typedef struct{
     double x;
     double y;
     double zav;
-    tirs tir[5];
+    bool laizer;
+    bool lazerasli;
+    tirs tir[15];
     bool has;
 }tanks;
 typedef struct {
@@ -39,5 +41,23 @@ typedef struct{
     bool divright;
     bool divleft;
 }box;
+typedef struct{
+    Map mapkomaki;
+    tanks tankha[3];
+    int nomre1;
+    int nomre2;
+}ssave;
+typedef struct {
+    double x;
+    double y;
+    int zaman;
+    int has;
+}selahs;
+typedef struct {
+    double x;
+    double y;
+    int zaman;
+    int has;
+}lazers;
 
 #endif //PROJECT_STRUCTHA_H

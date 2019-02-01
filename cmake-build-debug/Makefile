@@ -204,6 +204,33 @@ src/rasma.c.s:
 	$(MAKE) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/src/rasma.c.s
 .PHONY : src/rasma.c.s
 
+src/saveha.o: src/saveha.c.o
+
+.PHONY : src/saveha.o
+
+# target to build an object file
+src/saveha.c.o:
+	$(MAKE) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/src/saveha.c.o
+.PHONY : src/saveha.c.o
+
+src/saveha.i: src/saveha.c.i
+
+.PHONY : src/saveha.i
+
+# target to preprocess a source file
+src/saveha.c.i:
+	$(MAKE) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/src/saveha.c.i
+.PHONY : src/saveha.c.i
+
+src/saveha.s: src/saveha.c.s
+
+.PHONY : src/saveha.s
+
+# target to generate assembly for a file
+src/saveha.c.s:
+	$(MAKE) -f CMakeFiles/project.dir/build.make CMakeFiles/project.dir/src/saveha.c.s
+.PHONY : src/saveha.c.s
+
 src/simple_snake.o: src/simple_snake.c.o
 
 .PHONY : src/simple_snake.o
@@ -276,6 +303,9 @@ help:
 	@echo "... src/rasma.o"
 	@echo "... src/rasma.i"
 	@echo "... src/rasma.s"
+	@echo "... src/saveha.o"
+	@echo "... src/saveha.i"
+	@echo "... src/saveha.s"
 	@echo "... src/simple_snake.o"
 	@echo "... src/simple_snake.i"
 	@echo "... src/simple_snake.s"

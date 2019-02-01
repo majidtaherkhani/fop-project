@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/cygdrive/c/Users/majid/Desktop/project/src/harekat.c" "/cygdrive/c/Users/majid/Desktop/project/cmake-build-debug/CMakeFiles/project.dir/src/harekat.c.o"
   "/cygdrive/c/Users/majid/Desktop/project/src/naghsheha.c" "/cygdrive/c/Users/majid/Desktop/project/cmake-build-debug/CMakeFiles/project.dir/src/naghsheha.c.o"
   "/cygdrive/c/Users/majid/Desktop/project/src/rasma.c" "/cygdrive/c/Users/majid/Desktop/project/cmake-build-debug/CMakeFiles/project.dir/src/rasma.c.o"
+  "/cygdrive/c/Users/majid/Desktop/project/src/saveha.c" "/cygdrive/c/Users/majid/Desktop/project/cmake-build-debug/CMakeFiles/project.dir/src/saveha.c.o"
   "/cygdrive/c/Users/majid/Desktop/project/src/simple_snake.c" "/cygdrive/c/Users/majid/Desktop/project/cmake-build-debug/CMakeFiles/project.dir/src/simple_snake.c.o"
   "/cygdrive/c/Users/majid/Desktop/project/src/view.c" "/cygdrive/c/Users/majid/Desktop/project/cmake-build-debug/CMakeFiles/project.dir/src/view.c.o"
   )

@@ -35,7 +35,7 @@ void khoondan(Map *map){
 }
 void rasm(Map *map,SDL_Renderer *renderer){
     for(int i=0;i<map->tedad;i++){
-        thickLineRGBA(renderer,map->divar[i].x1,map->divar[i].y1,map->divar[i].x2,map->divar[i].y2,5,0,0,0,255);
+        thickLineRGBA(renderer,map->divar[i].x1,map->divar[i].y1,map->divar[i].x2,map->divar[i].y2,1,0,0,0,255);
     }
 }
 int divarkhor(Map map, double x, double y, double r){
@@ -149,114 +149,110 @@ void maprand(int shomare,box khoone[][5][5]){
             mark[i][j]=0;
         }
     }
-
-    int random,randoma;
-    random=rand()%5;
-    randoma=rand()%5;
     dfs(rand()%5,rand()%5,khoone,mark,shomare);
     dor(shomare,khoone);
 }
-void rasja(box khoone[][5][5],SDL_Renderer *renderer,Map *map, double tool, double arz) {
-    double jb=(750-tool)/2;
-    int te=0;
-    for(int k=1;k<=4;k++){
-        if(k==1){
-            for (int i = 0; i < 5; i++) {
-                for (int j = 0; j < 5; j++) {
-                int xx = j;
-                int yy = i;
-                if (khoone[i][j][k].divup == true) {
-                    thickLineRGBA(renderer, jb+xx *tool/10, yy*arz/10, jb+xx * tool/10 + tool/10, yy * arz/10, 2,80, 80,80, 255);
-//
-                }
-                if (khoone[i][j][k].divdon == true) {
-                    thickLineRGBA(renderer, jb+xx * tool/10, yy * arz/10 + arz/10, jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
-//
-                }
-                if (khoone[i][j][k].divright == true) {
-                    thickLineRGBA(renderer, jb+xx * tool/10 + tool/10, yy * arz/10, jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
-//
-                }
-                if (khoone[i][j][k].divleft == true) {
-                    thickLineRGBA(renderer, jb+xx * tool/10, yy * arz/10, jb+xx * tool/10, yy *arz/10 + arz/10, 2,80,80,80, 255);
-//
-                }
-            }
-        }
-    }
-    if(k==2) {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                int xx = j;
-                int yy = i;
-                if (khoone[i][j][k].divup == true) {
-                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10,2, 80, 80, 80, 255);
-//
-                }
-                if (khoone[i][j][k].divdon == true) {
-                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, yy * arz/10 + arz/10, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
-//
-                }
-                if (khoone[i][j][k].divright == true) {
-                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
-//
-                }
-                if (khoone[i][j][k].divleft == true) {
-                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, yy * arz/10, tool/2 + jb+xx * tool/10, yy * arz/10 +arz/10,2, 80, 80, 80, 255);
-//
-                }
-            }
-        }
-    }
-    if(k==3){
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++) {
-            int xx = j;
-            int yy = i;
-            if (khoone[i][j][k].divup == true) {
-                thickLineRGBA(renderer, jb+xx * tool/10, arz/2 + yy * arz/10, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10,2, 80, 80, 80, 255);
-//
-            }
-            if (khoone[i][j][k].divdon == true) {
-                thickLineRGBA(renderer, jb+xx * tool/10, arz/2 + yy * arz/10 + arz/10, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10 + arz/10,2, 80, 80, 80, 255);
-//
-            }
-            if (khoone[i][j][k].divright == true) {
-                thickLineRGBA(renderer, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10 + arz/10,2, 80, 80, 80, 255);
-//
-            }
-            if (khoone[i][j][k].divleft == true) {
-                thickLineRGBA(renderer, jb+xx * tool/10, arz/2 + yy * arz/10, jb+xx * tool/10, arz/2 + yy * arz/10 + arz/10, 2,80, 80, 80, 255);
-//
-            }
-        }
-    }
-        }
-    if(k==4) {
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                int xx = j;
-                int yy = i;
-                if (khoone[i][j][k].divup == true) {
-                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, arz/2 + yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10,2 ,80, 80, 80, 255);
-//
-                }
-                if (khoone[i][j][k].divdon == true) {
-                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, arz/2 + yy *arz/10 + arz/10, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10 +arz/10,2 ,80, 80,80,255);
-//
-                }
-                if (khoone[i][j][k].divright == true) {
-                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy *arz/10 + arz/10,2 ,80, 80,80,255);
-//
-                }
-                if (khoone[i][j][k].divleft == true) {
-                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, arz/2 + yy * arz/10, tool/2 + jb+xx * tool/10, arz/2 + yy *arz/10 + arz/10,2, 80, 80, 80, 255);
-                }
-            }
-        }
-    }
-    }
-}
+//void rasja(box khoone[][5][5],SDL_Renderer *renderer,Map *map, double tool, double arz) {
+//    double jb=(750-tool)/2;
+//    int te=0;
+//    for(int k=1;k<=4;k++){
+//        if(k==1){
+//            for (int i = 0; i < 5; i++) {
+//                for (int j = 0; j < 5; j++) {
+//                int xx = j;
+//                int yy = i;
+//                if (khoone[i][j][k].divup == true) {
+//                    thickLineRGBA(renderer, jb+xx *tool/10, yy*arz/10, jb+xx * tool/10 + tool/10, yy * arz/10, 2,80, 80,80, 255);
+////
+//                }
+//                if (khoone[i][j][k].divdon == true) {
+//                    thickLineRGBA(renderer, jb+xx * tool/10, yy * arz/10 + arz/10, jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
+////
+//                }
+//                if (khoone[i][j][k].divright == true) {
+//                    thickLineRGBA(renderer, jb+xx * tool/10 + tool/10, yy * arz/10, jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
+////
+//                }
+//                if (khoone[i][j][k].divleft == true) {
+//                    thickLineRGBA(renderer, jb+xx * tool/10, yy * arz/10, jb+xx * tool/10, yy *arz/10 + arz/10, 2,80,80,80, 255);
+////
+//                }
+//            }
+//        }
+//    }
+//    if(k==2) {
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                int xx = j;
+//                int yy = i;
+//                if (khoone[i][j][k].divup == true) {
+//                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10,2, 80, 80, 80, 255);
+////
+//                }
+//                if (khoone[i][j][k].divdon == true) {
+//                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, yy * arz/10 + arz/10, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
+////
+//                }
+//                if (khoone[i][j][k].divright == true) {
+//                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, yy * arz/10 + arz/10,2, 80, 80, 80, 255);
+////
+//                }
+//                if (khoone[i][j][k].divleft == true) {
+//                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, yy * arz/10, tool/2 + jb+xx * tool/10, yy * arz/10 +arz/10,2, 80, 80, 80, 255);
+////
+//                }
+//            }
+//        }
+//    }
+//    if(k==3){
+//    for (int i = 0; i < 5; i++) {
+//        for (int j = 0; j < 5; j++) {
+//            int xx = j;
+//            int yy = i;
+//            if (khoone[i][j][k].divup == true) {
+//                thickLineRGBA(renderer, jb+xx * tool/10, arz/2 + yy * arz/10, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10,2, 80, 80, 80, 255);
+////
+//            }
+//            if (khoone[i][j][k].divdon == true) {
+//                thickLineRGBA(renderer, jb+xx * tool/10, arz/2 + yy * arz/10 + arz/10, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10 + arz/10,2, 80, 80, 80, 255);
+////
+//            }
+//            if (khoone[i][j][k].divright == true) {
+//                thickLineRGBA(renderer, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10, jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10 + arz/10,2, 80, 80, 80, 255);
+////
+//            }
+//            if (khoone[i][j][k].divleft == true) {
+//                thickLineRGBA(renderer, jb+xx * tool/10, arz/2 + yy * arz/10, jb+xx * tool/10, arz/2 + yy * arz/10 + arz/10, 2,80, 80, 80, 255);
+////
+//            }
+//        }
+//    }
+//        }
+//    if(k==4) {
+//        for (int i = 0; i < 5; i++) {
+//            for (int j = 0; j < 5; j++) {
+//                int xx = j;
+//                int yy = i;
+//                if (khoone[i][j][k].divup == true) {
+//                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, arz/2 + yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10,2 ,80, 80, 80, 255);
+////
+//                }
+//                if (khoone[i][j][k].divdon == true) {
+//                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, arz/2 + yy *arz/10 + arz/10, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10 +arz/10,2 ,80, 80,80,255);
+////
+//                }
+//                if (khoone[i][j][k].divright == true) {
+//                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy * arz/10, tool/2 + jb+xx * tool/10 + tool/10, arz/2 + yy *arz/10 + arz/10,2 ,80, 80,80,255);
+////
+//                }
+//                if (khoone[i][j][k].divleft == true) {
+//                    thickLineRGBA(renderer, tool/2 + jb+xx * tool/10, arz/2 + yy * arz/10, tool/2 + jb+xx * tool/10, arz/2 + yy *arz/10 + arz/10,2, 80, 80, 80, 255);
+//                }
+//            }
+//        }
+//    }
+//    }
+//}
 int aval(box khoone[][5][5],Map *map,double  tool, double arz){
     int te=0;
     double jb=(750-tool)/2;
@@ -489,3 +485,4 @@ void dor(int sho,box khoone[][5][5]){
         }
     }
 }
+

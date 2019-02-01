@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/project.dir/src/harekat.c.o"
   "CMakeFiles/project.dir/src/naghsheha.c.o"
   "CMakeFiles/project.dir/src/rasma.c.o"
+  "CMakeFiles/project.dir/src/saveha.c.o"
   "CMakeFiles/project.dir/src/simple_snake.c.o"
   "CMakeFiles/project.dir/src/view.c.o"
   "project.pdb"

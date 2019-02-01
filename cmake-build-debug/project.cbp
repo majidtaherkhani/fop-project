@@ -88,6 +88,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/cygdrive/c/Users/majid/Desktop/project/src/SAVE.cpp">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/majid/Desktop/project/src/SAVE.h">
+			<Option target="project"/>
+		</Unit>
 		<Unit filename="/cygdrive/c/Users/majid/Desktop/project/src/harekat.c">
 			<Option target="project"/>
 		</Unit>
@@ -104,6 +110,12 @@
 			<Option target="project"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/majid/Desktop/project/src/rasma.h">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/majid/Desktop/project/src/saveha.c">
+			<Option target="project"/>
+		</Unit>
+		<Unit filename="/cygdrive/c/Users/majid/Desktop/project/src/saveha.h">
 			<Option target="project"/>
 		</Unit>
 		<Unit filename="/cygdrive/c/Users/majid/Desktop/project/src/simple_snake.c">
